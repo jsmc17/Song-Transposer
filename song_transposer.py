@@ -22,19 +22,8 @@ def transpose(song, modifier):
         song = p.sub(regex2_output[i], song)
     return(song)
 
-print('''Welcome to Simple Song Transposer.
--To begin, copy the song you wish to transpose to the clipboard (Ctrl + C).
--Then when prompted for a modifier enter any integer from 1-11(positive or negative).
--This will be the number of steps up or down the song will be transposed.
--------------------------------------------------------------------------''')
-
-while True:
-    mod = int(input('Enter Modifier'))
-    song = pyperclip.paste()
-    lizt = song.split('\n')
-
-    #
-    df = pd.DataFrame(data = lizt)
+def dframe(song_by_lines):
+    df = pd.DataFrame(data = song_by_lines)
     df.columns = ['text']
 
     # adding new columns to dataframe (NCTC, NSTC, percent, dash_count)
@@ -52,7 +41,9 @@ while True:
     - df['text'].str.count('\(') \
     - df['text'].str.count('\)') \
     - df['text'].str.count('\|') \
+    - df['text'].str.count('<|>') \
     - df['text'].str.count('\.') \
+    - df['text'].str.count('\r') \
     - df['text'].str.count('sus|aug|add')*3\
     - df['text'].str.count('maj|dim')*2\
     - df['text'].str.count('Intro|intro')*5\
@@ -89,12 +80,34 @@ while True:
 
     lizt = ser3.sort_index()
     output = '\n'.join(lizt)
-    print(output)
-    pyperclip.copy(output)
+    return output
 
-    print('''
--------------------------------------------------------------------------
+
+
+
+print('''Welcome to Simple Song Transposer.
+-To begin, copy the song you wish to transpose to the clipboard (Ctrl + C).
+-Then when prompted for a modifier enter any integer from 1-11(positive or negative).
+-This will be the number of steps up or down the song will be transposed.
+-------------------------------------------------------------------------''')
+
+while True:
+    mod = int(input('Enter Modifier'))
+    song = pyperclip.paste()
+    lizt = song.split('\n')
+
+    #
+    try:
+        output = dframe(lizt)
+        print(output)
+        pyperclip.copy(output)
+
+        print('''\n-------------------------------------------------------------------------
 -Transposed Song copied to clipboard.
 -Enter another modifier to transpose again:
+''')
+    except ValueError:
+        print('''Song Transposer did not detect any chords.
+Try to re-copy song to the clipboard and try again.
 ''')
 
