@@ -92,7 +92,10 @@ print('''Welcome to Simple Song Transposer.
 -------------------------------------------------------------------------''')
 
 while True:
-    mod = int(input('Enter Modifier'))
+    try:
+        mod = int(input('Enter Modifier'))
+    except ValueError:
+        print('Must enter a number')
     song = pyperclip.paste()
     lizt = song.split('\n')
 
@@ -105,6 +108,7 @@ while True:
         print('''\n-------------------------------------------------------------------------
 -Transposed Song copied to clipboard.
 -Enter another modifier to transpose again:
+-Enter 'Q' to quit.
 ''')
     except ValueError:
         print('''Song Transposer did not detect any chords.
