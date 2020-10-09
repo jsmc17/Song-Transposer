@@ -92,10 +92,14 @@ print('''Welcome to Simple Song Transposer.
 -------------------------------------------------------------------------''')
 
 while True:
+    
     try:
-        mod = int(input('Enter Modifier'))
+        inp = input('Enter modifier')
+        mod = int(inp)
     except ValueError:
         print('Must enter a number')
+    if inp.lower() == 'q':
+        break
     song = pyperclip.paste()
     lizt = song.split('\n')
 
