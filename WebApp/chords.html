@@ -1,0 +1,104 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+        <title>Simple Chord Transposer</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Simple Chord Transposer</a>
+            </div>
+          </div>
+        </nav>
+
+        <a href="https://github.com/jsmc17/Song-Transposer" align="middle">
+            <p align="center">Check the github readme for project description and instructions.</p>
+        </a>
+
+        <div class="container">
+
+            <!--{% for comment in comments %}-->
+            <!--    <div class="row">-->
+            <!--        {{ comment }}-->
+            <!--    </div>-->
+            <!--{% endfor %}-->
+
+            <div class="row">
+                <form action="." method="POST">
+                    <textarea class="form-control" name="contents" placeholder="Paste song here"></textarea>
+
+                    <label for="steps">Half-Steps:</label>
+                        <select name="steps" id="steps">
+                        <option value="-11">-11</option>
+                        <option value="-10">-10</option>
+                        <option value="-9">-9</option>
+                        <option value="-8">-8</option>
+                        <option value="-7">-7</option>
+                        <option value="-6">-6</option>
+                        <option value="-5">-5</option>
+                        <option value="-4">-4</option>
+                        <option value="-3">-3</option>
+                        <option value="-2">-2</option>
+                        <option value="-1">-1</option>
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+
+                    <input type="submit" class="btn btn-success" value="Transpose">
+                </form>
+            </div>
+
+
+
+            <div class="w3-container">
+              <!--<h2>Output</h2>-->
+              <div class="w3-container w3-border w3-large">
+                <div style="white-space: pre-wrap;font-family:Lucida Console" id="myElement">{{ key_message }}</div>
+                <!--<div class="w3-left-align"><p>{{ op }}</p></div>-->
+              </div>
+              <div class="w3-container w3-border w3-large">
+                <div style="white-space: pre-wrap;font-family:Lucida Console" id="myElement">{{ key }}</div>
+                <!--<div class="w3-left-align"><p>{{ op }}</p></div>-->
+              </div>
+              <br>
+              <div class="w3-container w3-border w3-large">
+                <div style="white-space: pre-wrap;font-family:Lucida Console" id="myElement">{{ op }}</div>
+                <!--<div class="w3-left-align"><p>{{ op }}</p></div>-->
+              </div>
+            </div>
+        </div>
+
+        <!--<form method="POST">-->
+        <!--    <input name="text">-->
+        <!--    <input type="submit">-->
+        <!--</form>-->
+
+
+
+
+    </body>
+</html>
