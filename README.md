@@ -86,4 +86,4 @@ First, all lines are separated into a list and are designated as chords or non-c
 
 Next it uses pattern matching to translate chords to different keys specified by the user. This tool uses increments of half-steps, so to transpose from the key of A to the key of E would be 7 half-steps up or 5 half-steps down.
 
-Finally, my tool attempts to identify the key of the song using the chords that are present. This is still a bit of a work-in-progress because the musical theory involved goes beyone my self-taught musician knowledge, and things key changes within songs further complicate the issue. Still, it can usually identify the key of simple country and pop songs, or at least give a list of the most likely keys.
+Finally, my tool attempts to identify the key of the song using the chords that are present. This is still a bit of a work-in-progress because the musical theory involved goes beyond my self-taught musician knowledge, and things like key changes within songs further complicate the issue. For now it uses the circle of fifths and the list of chords present to return a list of the possible keys
